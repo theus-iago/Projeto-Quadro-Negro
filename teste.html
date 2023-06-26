@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    body {
+      background-color:lightblue;
+      color:white;
+    }
+    .container {
+      background-color:white;
+      color:black;
+      border-radius:5%;
+      box-shadow:1px 2px 2px #777;
+      height:250px;
+      width:250px;
+      position:absolute;
+      top:40%;
+      left:50%;
+      transform:translate(-50%, -40%);
+    }
+    .moldura {
+      background-color:lightgray;
+      border:1px solid black;
+      border-radius:50%;
+      height:150px;
+      width:150px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      overflow:hidden;
+    }
+    .head {
+      background-color:gray;
+      border:1px solid black;
+      border-radius:50%;
+      opacity:100%;
+      height:70px;
+      width:70px;
+      position:absolute;
+      top:20%;
+      left:50%;
+      transform:translate(-50%, -20%);
+    }
+    .skin {
+      background-color:gray;
+      border:1px solid black;
+      border-radius:40%;
+      opacity:100%;
+      height:80px;
+      width:90px;
+      position:absolute;
+      top:140%;
+      left:50%;
+      transform:translate(-50%, -140%);
+    }
+    footer {
+      position:absolute;
+      top:85%;
+      left:36%;
+    }
+    .controles {
+      height:25px;
+      width:25px;
+      background-image:linear-gradient(-160deg, rgb(44,44,44), rgb(12,12,12));
+      box-shadow:1px 1px 1px #777;
+      text-shadow:1px 1px 1px #777;
+      padding:16px;
+      opacity:0%;
+      position:absolute;
+      top:80%;
+      left:50%;
+      transform:translate(-50%, -80%);
+      transition:height, width, border-radius 2s, 2s, 2s;
+      border-radius:40%;
+      overflow:hidden;
+    }
+    .controles >.ab {
+    margin:5px;
+    max-height:150px;
+    max-width:300px;
+    margin-right:75px;
+    margin-bottom:75px;
+    padding:16px;
+    }
+    .controles:hover {
+      height:150px;
+      width:300px;
+      border-radius:2%;
+      opacity:100%;
+    }
+    .sliders {
+      position:absolute;
+      top:55%;
+      left:70%;
+    }
+    .sliders >input {
+      height:10px;
+      width:80px;
+    }
+    .radios {
+      position:absolute;
+      top:35%;
+      left:80%;
+    }
+    .radios >input {
+      height:15px;
+      width:15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="moldura">
+      <div class="head"></div>
+      <div class="skin"></div>
+    </div>
+  <footer><h4>&copyMIDev</h4></footer>
+  </div>
+  <div class="controles">
+    <div class="ab">
+     <table>
+       <h3>Perfil</h3>
+      <tr>
+        <td><button onclick="back()">Back</button></td>
+        <td><button onclick="reverse()">Reverse</button></td>
+      </tr>
+     </table>
+      <div class="sliders">
+      <input type="range" / id="slider" min="0" max="100" value="100">
+      <input type="range" / id="slider2" min="0" max="100" value="100">
+      </div>
+      <div class="radios">
+        <input type="radio" name="" id="">
+        <input type="radio" name="" id="">
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const moldura= document.getElementsByClassName('moldura')[0];
+    const head= document.getElementsByClassName('head')[0];
+    const skin= document.getElementsByClassName('skin')[0];
+    
+    const back= () => {
+      moldura.style.cssText='transition: background 2s; background-color:lightgray;';
+      head.style.cssText='transition:background 2s; background-color:gray;';
+      skin.style.cssText='transition:background 2s; background-color:gray;';
+    }
+    const reverse= () => {
+      moldura.style.cssText='transition:background 2s; background-color:gray;';
+      head.style.cssText='transition: background 2s; background-color:lightgray;';
+      skin.style.cssText='transition: background 2s; background-color:lightgray;';
+    }
+    
+    document.getElementById('slider').oninput= slider;
+    function slider() {
+      head.style.opacity= this.value/100;
+    }
+    
+    document.getElementById('slider2').oninput= slider2;
+    function slider2() {
+      skin.style.opacity= this.value/100;
+    }
+  </script>
+</body
+</html>

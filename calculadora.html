@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculadora</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    body{
+    background:linear-gradient(-160deg,  #27fabc,#017955, #000000e9);
+      height:100vh;
+      text-align:center;
+      color:white;
+    }
+    .container{
+      background-color:#000000ec;
+      border:none;
+      border-radius:15px;
+      padding:20px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+    }
+    button{
+      height:50px;
+      width:50px;
+      font-size:25px;
+      border:none;
+      cursor:pointer;
+      background-color:#626262;
+      color:white;
+    }
+    button:active{
+      background-color:#212121;
+    }
+    .tela{
+      background-color:white;
+      color:black;
+      margin:5px;
+      height:25px;
+      font-size:25px;
+      text-align:end;
+    }
+    footer{
+      margin-top:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora</h1>
+    <div class="tela"></div>
+    <table>
+      <tr>
+    <td><button onclick="clean()">C</button></td>
+    <td><button onclick="back()"><</button></td>
+    <td><button onclick="insert('/')">/</button></td>
+    <td><button onclick="insert('*')">X</button></td>
+      </tr>
+      <tr>
+    <td><button onclick="insert('7')">7</button></td>
+    <td><button onclick="insert('8')">8</button></td>
+    <td><button onclick="insert('9')">9</button></td>
+    <td><button onclick="insert('-')">-</button></td>
+      </tr>
+      <tr>
+    <td><button onclick="insert('4')">4</button></td>
+    <td><button onclick="insert('5')">5</button></td>
+    <td><button onclick="insert('6')">6</button></td>
+    <td><button onclick="insert('+')">+</button></td>
+      </tr>
+      <tr>
+    <td><button onclick="insert('1')">1</button></td>
+    <td><button onclick="insert('2')">2</button></td>
+    <td><button onclick="insert('3')">3</button></td>
+    <td rowspan="2"><button style="border:; background-color:#fe7800; height:100px;" onclick="efetuar()">=</button></td>
+      </tr>
+      <tr>
+  <td colspan="2"><button style="width:100px;" onclick="insert('0')">0</button></td>
+  <td><button onclick="insert('.')">.</button></td>
+      </tr>
+    </table>
+    <footer>&copy matheusiago</footer>
+  </div>
+  <script>
+    function insert(num){
+ document.querySelector(".tela").innerHTML+= num;
+    }
+    function clean(){
+      document.querySelector(".tela").innerHTML= '';
+    }
+    function back(){
+      let tela=  document.querySelector(".tela").innerHTML;
+      document.querySelector(".tela").innerHTML= tela.substring(0, tela.length -1);
+    }
+    function efetuar(){
+      let tela=  document.querySelector(".tela").innerHTML;
+      if(tela){
+        document.querySelector(".tela").innerHTML= eval(tela);
+      }else{
+       document.querySelector(".tela").innerHTML='ERRO!';
+      }
+    }
+  </script>
+</body>
+</html>
